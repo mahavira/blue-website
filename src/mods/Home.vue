@@ -37,6 +37,7 @@ export default {
   width: 309px;
   height: 147px;
   margin-bottom: 50px;
+  position: relative;
 }
 .title1{
   font-size:36px;
@@ -46,6 +47,7 @@ export default {
   line-height: 72px;
   letter-spacing: 4px;
   margin: 0;
+  position: relative;
 }
 .title2{
   font-size:24px;
@@ -55,6 +57,7 @@ export default {
   line-height:30px;
   letter-spacing:2px;
   margin: 0;
+  position: relative;
 }
 .login{
   display: inline-block;
