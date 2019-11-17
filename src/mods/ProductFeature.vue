@@ -57,7 +57,7 @@ export default {
 .content{
   background:rgba(255,255,255,0.96);
   display: flex;
-  max-width: 940px;
+  width: 940px;
   margin-top: 60px;
 }
 .item{

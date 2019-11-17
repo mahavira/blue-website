@@ -53,7 +53,7 @@ export default {
   margin-top: 60px;
   padding: 10px 60px;
   box-sizing: border-box;
-  max-width: 960px;
+  width: 960px;
 }
 .item{
   border-bottom: 1px solid rgba(134,130,130, 0.2);

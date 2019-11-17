@@ -44,7 +44,7 @@ export default {
   background:rgba(255,255,255,0.96);
   margin-top: 130px;
   display: flex;
-  max-width: 940px;
+  width: 940px;
 }
 .item{
   flex: 1;

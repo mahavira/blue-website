@@ -71,7 +71,8 @@ export default {
   line-height:30px;
   letter-spacing:2px;
   padding: 10px 13px;
-  width: 80px;
+  width: 110px;
+  box-sizing: border-box;
 }
 .item-body{
   font-size:14px;
@@ -81,7 +82,6 @@ export default {
   line-height:26px;
   letter-spacing:2px;
   padding: 7px 13px 10px;
-  flex: 1;
   a{
     text-decoration: none;
     color: #9492BA;

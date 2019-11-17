@@ -172,7 +172,7 @@ export default {
   }
 
   .block{
-    width: 540px;
+    flex:0 0 540px;
     height: 630px;
     background: #FFF;
     border-radius:15px;
