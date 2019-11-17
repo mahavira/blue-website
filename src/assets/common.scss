@@ -1,0 +1,45 @@
+@import './mixin';
+.clearfix{
+  @include clearfix;
+}
+.flex {
+  display: flex;
+}
+.flex-column{
+  flex-direction: column !important;
+}
+.flex-row{
+  flex-direction: row !important;
+}
+.is-justify-start {
+  justify-content: start !important;
+}
+.is-justify-center {
+  justify-content: center !important;
+}
+.is-justify-end {
+  justify-content: flex-end !important;
+}
+.is-justify-space-between {
+  justify-content: space-between !important;
+}
+.is-justify-space-around {
+  justify-content: space-around !important;
+}
+.is-align-start{
+  align-items: flex-start !important;
+}
+.is-align-end{
+  align-items: flex-end !important;
+}
+/* transform-x */
+.transform-x-leave-active,
+.transform-x-enter-active {
+  transition: transform .3s ease-in-out;
+}
+.transform-x-enter, .transform-x-leave-to {
+  transform: translateX(-100%);
+}
+.transform-x-enter-to {
+  transform: translateX(0);
+}
