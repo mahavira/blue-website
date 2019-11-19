@@ -9,7 +9,6 @@
 
 <script>
 /* eslint-disable */
-
 import Segment from './segment';
 
 export default {

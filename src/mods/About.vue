@@ -1,5 +1,5 @@
 <template>
-  <section class="mod">
+  <section class="mod about">
     <div class="mod-screen is-align-start">
       <div class="mod-dialog">
         <div class="intro">
@@ -34,14 +34,19 @@ export default {
 
 <style lang="scss" scoped>
 .mod{
-  background-image: url(../assets/bg/home_1920.png);
+  background-image: url(../assets/bg/bg_photo.png);
+  background-color: #220EDB;
+  background-size: 15vw 100%;
+  background-position: right center;
 }
-
 .intro{
   width: 400px;
   height: 360px;
   padding: 0 20px;
   position: relative;
+}
+.mod-title{
+  margin-top: 0;
 }
 .contact{
   color: #FFF;
@@ -85,5 +90,44 @@ export default {
 }
 .addr{
   background-image: url(../assets/icon/icon_address.png);
+}
+@import '../styles/mixin';
+@include respond-to(wide) {
+  .intro{
+    width: 300px;
+  }
+}
+@include respond-to(tablet) {
+  .mod{
+    background-size: cover;
+  }
+  .mod-screen{
+    padding: 0;
+    min-height: auto;
+  }
+  .mod-dialog{
+    position: relative;
+    flex-direction: column;
+    padding: 50px 20px;
+    align-items: center;
+    width: auto;
+    height: auto;
+  }
+  .intro{
+    width: auto;
+    height: auto;
+    margin-bottom: 50px;
+  }
+  .contact{
+    padding: 0;
+    width: auto;
+    font-size: 14px;
+    .contact-item{
+      padding-left: 40px;
+    }
+  }
+  .line{
+    margin: 30px 0;
+  }
 }
 </style>

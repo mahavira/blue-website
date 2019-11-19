@@ -4,20 +4,27 @@
     <div class="container" @click="closeMenu">
       <mod-home/>
       <mod-product-service-value ref="mod[0]"/>
-      <mod-product-intro ref="mod[1]"/>
+      <mod-product-introduce ref="mod[1]"/>
       <mod-product-module/>
       <mod-product-feature ref="mod[2]"/>
-      <mod-product-service ref="mod[3]"/>
+      <mod-service-guarantee ref="mod[3]"/>
       <mod-about ref="mod[4]"/>
       <mod-footer/>
-      <!-- <mod-login/>
-      <mod-register/>
-      <mod-userinfo/> -->
     </div>
+    <transition name="fade">
+      <div class="loader-wrp" v-if="loading">
+        <div class="box">
+            <div class="loader"></div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 <script>
-import Velocity from 'velocity-animate';
+import {
+  scrollTo,
+  preloadImages,
+} from './util';
 
 const compMods = {};
 const requireContext = require.context('./mods/', false, /\.vue$/);
@@ -38,6 +45,7 @@ export default {
       clientHeight: 0,
       clientWidth: 0,
       userinfo: null,
+      loading: true,
     };
   },
   computed: {
@@ -47,7 +55,13 @@ export default {
       return mods;
     },
   },
-  mounted() {
+  async mounted() {
+    preloadImages([
+      (await import('./assets/bg/home_1920.png')).default,
+      (await import('./assets/bg/bg_zs02.png')).default,
+    ]).finally(() => {
+      this.loading = false;
+    });
     document.addEventListener('scroll', this.scroll);
     window.addEventListener('resize', this.resize);
     this.resize();
@@ -79,12 +93,7 @@ export default {
     },
     scrollToMod(index) {
       const { offsetTop } = this.$refs[`mod[${index}]`].$el;
-      Velocity(document.body, 'scroll', {
-        offset: offsetTop,
-        duration: 1000,
-        easing: 'easeIn',
-        mobileHA: false,
-      });
+      scrollTo(offsetTop);
     },
     login() {
       this.$refs.sidebar.openDialog('login');
@@ -92,14 +101,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.container{
-  margin-left: 100px;
-}
-</style>

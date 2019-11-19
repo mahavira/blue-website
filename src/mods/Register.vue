@@ -1,5 +1,5 @@
 <template>
-  <div class="mod-dialog flex-column">
+  <div class="mod-dialog register flex-column">
     <div class="dh">
       <h2 class="mod-title">请完善注册信息</h2>
     </div>
@@ -49,7 +49,6 @@ export default {
 }
 .dh{
   position: relative;
-  padding: 0 110px;
   margin-bottom: 85px;
 }
 
@@ -98,5 +97,21 @@ export default {
     color: #FFF;
   }
 }
-
+@import '../styles/mixin';
+@include respond-to(wide) {
+  .dh {
+    margin-bottom: 20px;
+  }
+  .agreement{
+    margin: 10px 0;
+  }
+  .noaccount{
+    margin-top: 20px;
+  }
+}
+@include respond-to(mobile) {
+  .mod-dialog{
+    justify-content: flex-start;
+  }
+}
 </style>

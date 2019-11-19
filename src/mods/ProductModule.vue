@@ -1,8 +1,8 @@
 <template>
-  <section class="mod" ref="mod">
+  <section class="mod product-module" ref="mod">
     <div class="mod-screen" ref="screen"></div>
     <div class="mod-screen flex-row mod-container" :class="{fixed: isFixed}">
-      <div class="mod-screen-wrp" ref="container">
+      <div class="mod-container-wrp" ref="container">
         <div class="header">
           <h2 class="mod-title"><span>7</span>大核心板块</h2>
           <h3 class="mod-subtitle">PRODUCT INTRODUCTION</h3>
@@ -102,6 +102,8 @@
 </template>
 
 <script>
+import { isMobile } from '../util';
+
 export default {
   name: 'ProductModule',
   data() {
@@ -111,6 +113,7 @@ export default {
   },
   mounted() {
     setTimeout(() => {
+      if (isMobile()) return;
       const { mod, screen, container } = this.$refs;
       const { offsetTop, offsetWidth, offsetHeight } = mod;
       const { scrollWidth } = container;
@@ -150,72 +153,126 @@ export default {
     left: 100px;
   }
 }
-.mod-screen-wrp{
+.mod-container-wrp{
   display: flex;
   overflow: hidden;
-  padding: 38px 20px;
+  padding: 38px 20px 0;
 }
-.mod-screen{
-  .header{
-    flex: 0 0 500px;
-    padding: 0 100px 0 275px;
-  }
-  .mod-title, .mod-subtitle, .mod-intro{
-    color: #220EDB;
-    text-shadow: 1px 1px 1px  #F8E800;
-  }
-  .mod-title span{
-    font-size: 100px;
-  }
-  .mod-intro{
-    margin-top: 100px;
-  }
+.header{
+  flex: 0 0 500px;
+  padding: 0 5vw 0 15vw;
+}
+.mod-title, .mod-subtitle, .mod-intro{
+  color: #220EDB;
+  text-shadow: 1px 1px 1px  #F8E800;
+}
+.mod-title span{
+  font-size: 100px;
+}
+.mod-intro{
+  margin-top: 100px;
+}
 
-  .block{
-    flex:0 0 540px;
-    height: 630px;
-    background: #FFF;
-    border-radius:15px;
-    padding: 50px 12px 0;
-    position: relative;
-    box-sizing: border-box;
-    margin-right: 20px;
-    box-shadow: 5px 20px 20px rgba($color: #000000, $alpha: 0.3);
-  }
-  .block-dt{
-    background:rgba(34,14,219,1);
-    border-radius:2px;
-    position: absolute;
-    left: 0;
-    top: -38px;
-    color: #FFF;
-    font-size: 20px;
-    font-family:PingFang-SC-Bold,PingFang-SC;
+.block{
+  flex:0 0 540px;
+  height: 630px;
+  background: #FFF;
+  border-radius:15px;
+  padding: 50px 12px 0;
+  position: relative;
+  box-sizing: border-box;
+  margin-right: 20px;
+  box-shadow: 5px 20px 20px rgba($color: #000000, $alpha: 0.3);
+}
+.block-dt{
+  background:rgba(34,14,219,1);
+  border-radius:2px;
+  position: absolute;
+  left: 0;
+  top: -38px;
+  color: #FFF;
+  font-size: 20px;
+  font-family:PingFang-SC-Bold,PingFang-SC;
+  font-weight:bold;
+  padding: 13px 50px 13px 20px;
+  line-height: 1;
+  span{
+    font-size: 48px;
+    font-family:DINAlternate-Bold,DINAlternate;
     font-weight:bold;
-    padding: 13px 50px 13px 20px;
-    line-height: 1;
-    span{
-      font-size: 48px;
-      font-family:DINAlternate-Bold,DINAlternate;
-      font-weight:bold;
-      color:rgba(255,255,255,1);
-      vertical-align: middle;
-      padding: 0 25px 0 8px;
-    }
+    color:rgba(255,255,255,1);
+    vertical-align: middle;
+    padding: 0 25px 0 8px;
   }
-  .block-img img {
-    display: block;
-    margin: 0;
-    padding: 0;
+}
+.block-img img {
+  display: block;
+  width: 100%;
+}
+.block-txt{
+  font-size:12px;
+  font-family:PingFangSC-Regular,PingFang SC;
+  font-weight:400;
+  color:rgba(34,14,219,1);
+  line-height: 24px;
+  padding: 20px 40px;
+}
+@import '../styles/mixin';
+@include respond-to(wide) {
+  .header{
+    padding: 0 5vw 0 5vw;
+    flex: 0 0 400px;
+  }
+  .block{
+    flex: 0 0 440px;
+    height: 530px;
   }
   .block-txt{
-    font-size:12px;
-    font-family:PingFangSC-Regular,PingFang SC;
-    font-weight:400;
-    color:rgba(34,14,219,1);
-    line-height: 24px;
-    padding: 20px 40px;
+    padding: 10px 15px;
   }
 }
-
+@include respond-to(tablet) {
+  .mod-screen{
+    display: none;
+    background-position: left top;
+    background-size: 320% auto;
+  }
+  .mod-container{
+    position: relative;
+    height: auto;
+    display: block;
+  }
+  .mod-container-wrp{
+    flex-direction: column;
+    padding: 0 20px;
+    display: block;
+  }
+  .header{
+    padding: 0;
+    margin-bottom: 60px;
+    .mod-intro{
+      margin-top: 10px;
+    }
+    .mod-title{
+      span{
+        font-size: 44px;
+      }
+    }
+  }
+  .block{
+    margin-right: 0;
+    margin-bottom: 70px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.1);
+    .block-dt{
+      top: -30px;
+      font-size: 18px;
+      line-height: 36px;
+      span{
+        font-size: 36px;
+      }
+    }
+  }
+}
 </style>

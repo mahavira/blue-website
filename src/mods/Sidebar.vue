@@ -1,5 +1,5 @@
 <template>
-  <section class="sidebar">
+  <section class="mod sidebar">
     <div class="dialog">
       <div class="menus" :class="{opened: opened}">
         <div class="title">MENU</div>
@@ -16,17 +16,12 @@
       </transition>
     </div>
     <div class="items">
-      <div class="item logo">
-        <div class="inner"></div>
-      </div>
+      <div class="item logo"></div>
       <div class="item menubar" @click="toggleMenu">
-        <div class="inner">
-          <svg-close :state="opened"/>
-        </div>
+        <svg-close :state="opened"/>
       </div>
-      <div class="item state" @click="openDialog('login')">
-        <div class="inner"></div>
-      </div>
+      <div class="item logo2"></div>
+      <div class="item state" @click="openDialog('login')"></div>
     </div>
   </section>
 </template>
@@ -90,8 +85,8 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
+@import '../styles/mixin';
 .sidebar{
   height: 100vh;
   width: 100px;
@@ -114,48 +109,35 @@ export default {
   z-index: 1;
   position: relative;
   background: #FFF;
+  padding: 20px 10px;
+  box-sizing: border-box;
 }
 .item{
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: nowrap;
-  .inner{
-    background: #eee;
-    height: 100px;
-    width: 80px;
-  }
+  width: 80px;
+  height: 80px;
   &.logo{
-    align-items: center;
-    .inner{
-      height: 62px;
-      height: 111px;
-      margin-top: 26px;
-      background: url(../assets/logo.png) center no-repeat;
-    }
+    height: 111px;
+    background: url(../assets/logo.png) center no-repeat;
   }
-  &.menubar{
-    justify-content: center;
-    align-items: center;
-    .inner{
-      background: #fff;
-      height: 80px;
-    }
+  &.logo2{
+    height: 40px;
+    width: 40px;
+    background: url(../assets/logo2.png) center no-repeat;
+    background-size: contain;
+    display: none;
   }
   &.state{
-    justify-content: flex-end;
-    .inner{
-      height: 60px;
-      width: 60px;
-      margin-bottom: 20px;
-      border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background: url(../assets/icon/icon_head.png) center no-repeat;
+    &.active{
+      background-image: url(../assets/icon/icon_head_land.png);
     }
   }
 }
 .menus{
   width: 540px;
-  background: rgba($color: #FFF, $alpha: 0.96);
+  background: rgba($color: #FFF, $alpha: 1);
   position: absolute;
   left: 0;
   top: 0;
@@ -181,42 +163,95 @@ export default {
     line-height:48px;
     margin-bottom: 100px;
   }
-  .menu-item{
-    font-size: 18px;
-    font-family: PingFang-SC-Heavy,PingFang-SC;
-    font-weight: 800;
-    color:rgba(0,0,0,1);
-    line-height: 64px;
+}
+.menu-item{
+  font-size: 18px;
+  font-family: PingFang-SC-Heavy,PingFang-SC;
+  font-weight: 800;
+  color:rgba(0,0,0,1);
+  line-height: 64px;
+  position: relative;
+  margin-bottom: 50px;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  span{
     position: relative;
-    padding: 0;
-    margin-bottom: 50px;
-    cursor: pointer;
-    span{
-      position: relative;
+  }
+  &.active,
+  &:hover{
+    $colors: (#6FCCCE, #F7E700, #F54B00, #FDB2D3, #220EDB);
+    @each $color in $colors {
+      $index: index($colors, $color);
+      &:nth-of-type(#{$index}):before {
+        background: $color;
+      }
     }
-    &.active,&:hover{
-      &:nth-of-type(1):before{ background: #6FCCCE;}
-      &:nth-of-type(2):before{ background: #F7E700;}
-      &:nth-of-type(3):before{ background: #F54B00;}
-      &:nth-of-type(4):before{ background: #FDB2D3;}
-      &:nth-of-type(5):before{ background: #220EDB;}
+  }
+  &::before{
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s;
+    background: #FFF;
+    transform: scale(0.8);
+  }
+  &:hover:before,&.active:before{
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+@include respond-to(tablet) {
+  .sidebar{
+    right: 0;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+  }
+  .dialog{
+    left: 0;
+    top: 60px;
+  }
+  .items{
+    flex-direction: row;
+    height: auto;
+    padding: 10px;
+    .item.logo{
+      display: none;
     }
-    &::before{
-      content: '';
-      position: absolute;
-      left: -27px;
-      top: 0;
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      opacity: 0;
-      transition: all 0.8s;
-      background: #FFF;
-      transform: scale(0.8);
+    .item.logo2{
+      display: block;
     }
-    &:hover:before,&.active:before{
-      transform: scale(1);
-      opacity: 0.5;
+    .item.menubar{
+      height: 40px;
+      width: 40px;
+      white-space: 40px;
+      svg{
+        width: 40px;
+        height: 40px;
+      }
+    }
+    .item.state{
+      width: 40px;
+      height: 40px;
+      background-size: 120%;
+    }
+  }
+}
+@include respond-to(mobile) {
+  .menus{
+    width: 90vw;
+    padding-left: 80px;
+    .title{
+      margin-bottom: 30px;
+    }
+    .menu-item{
+      margin-bottom: 20px;
     }
   }
 }

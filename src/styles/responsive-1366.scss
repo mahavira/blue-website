@@ -1,0 +1,33 @@
+@import './mixin';
+@include respond-to(wide) {
+  .mod-title{
+    font-size: 40px;
+    margin: 15px 0;
+    line-height: 50px;
+  }
+  .mod-subtitle{
+    font-size: 28px;
+    line-height: 35px;
+  }
+  .mod-intro{
+    font-size: 17px;
+  }
+  .mod-card{
+    margin-top: 40px;
+    width: 860px;
+    .item{
+      padding: 60px 30px 40px;
+    }
+  }
+  .mod-listcard{
+    margin-top: 20px;
+    padding: 0 40px;
+    .item-title{
+      padding-top: 40px;
+      background-position: left 30px;
+    }
+    .item-content{
+      padding: 40px 0 40px 40px;
+    }
+  }
+}

@@ -1,9 +1,9 @@
 <template>
-  <section class="mod">
+  <section class="mod product-service-value">
     <div class="mod-screen">
       <h2 class="mod-title">产品的服务与价值</h2>
       <h3 class="mod-subtitle">SERVICE AND VALUE</h3>
-      <div class="content">
+      <div class="mod-card">
         <div class="item">
           <img src="../assets/icon/赋能.png" alt="">
           <h3>赋能企业</h3>
@@ -35,42 +35,15 @@ export default {
   name: 'ProductServiceValue',
 };
 </script>
-
 <style lang="scss" scoped>
 .mod{
   background-image: url(../assets/bg/home_1920.png);
 }
-.content{
-  background:rgba(255,255,255,0.96);
-  margin-top: 130px;
-  display: flex;
-  width: 940px;
-}
-.item{
-  flex: 1;
-  text-align: center;
-  padding: 95px 50px 66px;
-  box-sizing: border-box;
-  img{
-    margin-bottom: 50px;
-  }
-  h3{
-    font-size:18px;
-    font-family:PingFang-SC-Bold,PingFang-SC;
-    font-weight:bold;
-    color:rgba(0,0,0,1);
-    line-height:25px;
-    letter-spacing:2px;
-    margin: 0 0 18px;
-  }
-  p{
-    font-size:14px;
-    font-family:PingFangSC-Regular,PingFang SC;
-    font-weight:400;
-    color:rgba(0,0,0,1);
-    line-height:24px;
-    letter-spacing:2px;
-    margin: 0;
+
+@import '../styles/mixin';
+@include respond-to(wide) {
+  .mod{
+    background-position: left top;
   }
 }
 </style>

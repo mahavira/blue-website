@@ -1,5 +1,5 @@
 <template>
-  <div class="mod-dialog">
+  <div class="mod-dialog userinfo">
     <div class="content">
       <p>
         大连有声优势发展有限公司
@@ -47,7 +47,6 @@ export default {
   flex-direction: column;
   padding: 0 20px;
   p{
-    padding: 0;
     margin: 12px 0;
   }
 }

@@ -44,6 +44,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../styles/mixin';
+
 .mod{
   background: #0D0466;
 }
@@ -88,7 +90,44 @@ export default {
   }
   p{
     padding: 5px 0;
-    margin: 0;
+  }
+}
+@include respond-to(tablet) {
+  .footer{
+    flex-direction: column;
+    padding: 30px 20px;
+    .footer-body{
+      padding: 0;
+      flex-direction: column;
+    }
+    .footer-img{
+      margin: 0;
+      padding: 0 0 20px;
+      img{
+        width: 118px;
+      }
+    }
+    .item{
+      margin-right: 0;
+    }
+    .item-body{
+      flex: 1;
+      font-size: 12px;
+    }
+    .item-title{
+      padding: 10px 0;
+      font-size: 14px;
+      width: 68px;
+      text-align: right;
+    }
+    .item:nth-of-type(1),.item:nth-of-type(2){
+      .item-body{
+        display: flex;
+        p:nth-of-type(1){
+          margin-right: 20px;
+        }
+      }
+    }
   }
 }
 </style>

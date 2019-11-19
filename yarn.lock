@@ -3503,6 +3503,11 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fastclick@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npmjs.org/fastclick/-/fastclick-1.0.6.tgz#161625b27b1a5806405936bda9a2c1926d06be6a"
+  integrity sha1-FhYlsnsaWAZAWTa9qaLBkm0Gvmo=
+
 faye-websocket@^0.10.0:
   version "0.10.0"
   resolved "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.10.0.tgz#4e492f8d04dfb6f89003507f6edbf2d501e7c6f4"
@@ -5550,11 +5555,6 @@ normalize-url@^3.0.0:
   resolved "https://registry.npmjs.org/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
   integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
 
-normalize.css@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.npmjs.org/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
-  integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
-
 npm-bundled@^1.0.1:
   version "1.0.6"
   resolved "https://registry.npmjs.org/npm-bundled/-/npm-bundled-1.0.6.tgz#e7ba9aadcef962bb61248f91721cd932b3fe6bdd"
@@ -6928,6 +6928,11 @@ reselect@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
   integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
+
+reset-css@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/reset-css/-/reset-css-5.0.1.tgz#1ced0604fdb6836567e40d82de3537afaf3bb4c8"
+  integrity sha512-VyuJdNFfp5x/W6e5wauJM59C02Vs0P22sxzZGhQMPaqu/NGTeFxlBFOOw3eq9vQd19gIDdZp7zi89ylyKOJ33Q==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"

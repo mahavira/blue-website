@@ -1,0 +1,82 @@
+@media screen and (max-width: 768px) {
+  .container{
+    margin-left: 0;
+    padding-top: 60px;
+  }
+  .mod{
+    background-attachment: scroll;
+  }
+  .mod-title{
+    font-size: 32px;
+    line-height: 38px;
+    margin: 10px;
+    text-align: center;
+  }
+  .mod-subtitle{
+    font-size: 22px;
+    line-height: 28px;
+    text-align: center;
+  }
+  .mod-intro{
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+  }
+  .mod-screen{
+    height: auto;
+    min-height: calc(100vh - 60px);
+    padding: 50px;
+    box-sizing: border-box;
+  }
+  .mod-dialog{
+    width: 100vw;
+  }
+  .mod-dialog::before{
+    display: none;
+  }
+  .mod-card{
+    width: auto;
+    flex-direction: column;
+    .item{
+      padding: 30px;
+      img{
+        margin-bottom: 20px;
+        width: 40px;
+      }
+      h3{
+        font-size: 14px;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  .mod-listcard{
+    padding: 0 20px;
+    .items{
+      display: block;
+      height: auto;
+    }
+    .item{
+      display: block;
+    }
+    .item-title{
+      background-size: 25px 25px;
+      background-position: left 35px;
+      padding-left: 40px;
+      font-size: 14px;
+    }
+    .item-content{
+      padding: 20px 20px 20px 40px;
+      p, a{
+        font-size: 12px;
+        margin: 0 0 20px 0;
+      }
+      a{
+        padding-left: 30px;
+        margin: 0;
+        margin-right: 20px;
+      }
+    }
+  }
+}

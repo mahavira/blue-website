@@ -23,7 +23,6 @@ export default {
   name: 'Home',
 };
 </script>
-
 <style lang="scss" scoped>
 .mod{
   background-image: url(../assets/bg/home_1920.png);
@@ -46,7 +45,6 @@ export default {
   color:rgba(255,255,255,1);
   line-height: 72px;
   letter-spacing: 4px;
-  margin: 0;
   position: relative;
 }
 .title2{
@@ -56,7 +54,6 @@ export default {
   color:rgba(255,255,255,1);
   line-height:30px;
   letter-spacing:2px;
-  margin: 0;
   position: relative;
 }
 .login{
@@ -114,5 +111,71 @@ export default {
   position: absolute;
   right: 510px;
   top: 0;
+}
+@import '../styles/mixin';
+@include respond-to(wide) {
+  .logo-txt{
+    margin-bottom: 20px;
+    width: 250px;
+    background-size: contain;
+  }
+  .title1{
+    font-size: 28px;
+  }
+  .title2{
+    font-size: 20px;
+  }
+  .login{
+    margin: 25px 0;
+    padding: 10px 20px;
+  }
+}
+@include respond-to(tablet) {
+  .mod{
+    background-position: left top;
+  }
+  .mod-screen{
+    padding-bottom: 0;
+  }
+  .wrp{
+    padding-left: 0;
+  }
+  .decorate{
+    display: none;
+  }
+  .logo-txt{
+    width: 151px;
+    height: 72px;
+  }
+  .title1{
+    font-size:18px;
+  }
+  .title2{
+    font-size: 12px;
+  }
+  .login{
+    margin: 50px 0 80px;
+    padding: 5px 15px;
+    font-size: 14px;
+    line-height: 30px;
+    i{
+      margin-left: 30px;
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+    }
+  }
+  .qrcode-wrp{
+    width: 150px;
+    height: 190px;
+    .qrcode{
+      width: 120px;
+      height: 120px;
+    }
+    .txt{
+      top: 50px;
+      left: 150px;
+    }
+  }
 }
 </style>

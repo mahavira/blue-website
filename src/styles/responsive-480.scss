@@ -1,0 +1,38 @@
+@media screen and (max-width: 480px) {
+  .mod-title{
+    font-size: 24px;
+    line-height: 32px;
+    margin: 10px;
+    text-align: center;
+  }
+  .mod-subtitle{
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+  }
+  .mod-intro{
+    text-align: center;
+  }
+  .mod-screen{
+    padding: 45px 20px;
+  }
+  .form-item{
+    margin-top: 8px;
+    position: relative;
+    input,&.btn {
+      width: 300px;
+    }
+    .verify-code{
+      background:rgba(34,14,219,1);
+      border-radius: 10px;
+      color: #FFF;
+      position: absolute;
+      right: 2px;
+      top: 2px;
+      padding: 11px 16px;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
+}
