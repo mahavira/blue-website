@@ -10,9 +10,13 @@
         </div>
       </div>
       <transition name="transform-x">
-        <mod-login v-if="dialog==='login'" @openDialog="openDialog"/>
-        <mod-register v-else-if="dialog==='register'" @openDialog="openDialog"/>
-        <mod-userinfo v-else-if="dialog==='userinfo'"/>
+        <mod-login v-if="showLogin"/>
+      </transition>
+      <transition name="transform-x">
+        <mod-register v-if="showRegister"/>
+      </transition>
+      <transition name="transform-x">
+        <mod-userinfo v-if="showUserinfo"/>
       </transition>
     </div>
     <div class="items">
@@ -21,7 +25,7 @@
         <svg-close :state="opened"/>
       </div>
       <div class="item logo2"></div>
-      <div class="item state" @click="openDialog('login')"></div>
+      <div class="item state" @click="openLogin"></div>
     </div>
   </section>
 </template>
@@ -51,15 +55,18 @@ export default {
         '服务与保障',
         '关于我们',
       ],
-      dialog: '',
+      showLogin: false,
+      showRegister: false,
+      showUserinfo: false,
     };
   },
   watch: {
-    dialog(val) {
-      if (val) this.opened = false;
-    },
     opened(val) {
-      if (val) this.dialog = '';
+      if (val) {
+        this.showLogin = false;
+        this.showRegister = false;
+        this.showUserinfo = false;
+      }
     },
   },
   methods: {
@@ -71,16 +78,17 @@ export default {
       this.currentMenuIndex = index;
       this.opened = !this.opened;
     },
-    openDialog(e = 'login') {
-      if (this.dialog === e) {
-        this.dialog = '';
-        return;
-      }
-      if (this.$parent.userinfo) {
-        this.dialog = 'userinfo';
+    openLogin() {
+      const isLogin = !!this.$parent.userinfo;
+      if (isLogin) {
+        this.showUserinfo = !this.showUserinfo;
+      } else if (this.showLogin) {
+        this.showLogin = false;
+        this.showRegister = false;
       } else {
-        this.dialog = e;
+        this.showLogin = true;
       }
+      this.opened = false;
     },
   },
 };

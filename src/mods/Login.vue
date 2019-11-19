@@ -6,18 +6,22 @@
     </div>
     <div class="content">
       <div class="form">
-        <div class="form-item">
-          <input type="text" placeholder="请输入手机号码">
-          <div class="error-info">数字位数超出正常范围</div>
+        <div class="form-item" :class="[error.phone.type]">
+          <input type="text" v-model="formdata.phone" placeholder="请输入手机号码">
+          <div class="tip-info">{{error.phone.message}}</div>
+          <i class="tip-dot"></i>
         </div>
-        <div class="form-item">
-          <input type="text" placeholder="请输入短信验证码">
-          <a class="verify-code" href="javascript:;">获取验证码</a>
-          <div class="error-info">数字位数超出正常范围</div>
+        <div class="form-item verifycode" :class="[error.verifycode.type]">
+          <input type="text" v-model="formdata.verifycode" placeholder="请输入短信验证码">
+          <a class="verifycode-btn" href="javascript:;">获取验证码</a>
+          <div class="tip-info">{{error.verifycode.message}}</div>
+          <i class="tip-dot"></i>
         </div>
-        <div class="form-item btn">登录</div>
+        <button class="form-item btn" :disabled="isSubmit" @click="submit">
+          <img src="../assets/icon/loading.svg" alt="">
+          <span>登录</span></button>
         <a class="noaccount" href="javascript:;"
-          @click="$emit('openDialog', 'register')">没有账户？去注册账号</a>
+          @click="$parent.showRegister = true">没有账户？去注册账号</a>
       </div>
       <div class="line"></div>
       <div class="qrcode">
@@ -29,9 +33,66 @@
 </template>
 
 <script>
+import Validator from '../validator';
+
 export default {
   name: 'Login',
-  props: {},
+  data() {
+    const formdata = {
+      phone: '',
+      verifycode: '',
+    };
+    const error = {};
+    Object.keys(formdata).forEach((name) => {
+      error[name] = { type: '', message: '' };
+    });
+    return {
+      formdata,
+      error,
+      isSubmit: false,
+      rules: {
+        phone: [{
+          required: true,
+          message: '请输入手机号码',
+          trigger: 'blur',
+        }, {
+          message: '手机格式不正确',
+          pattern: /^1[3456789]\d{9}$/,
+          trigger: 'blur',
+        }],
+        verifycode: [{
+          required: true,
+          message: '请输入验证码',
+          trigger: 'blur',
+        }, {
+          len: 4,
+          message: '验证码长度为4位',
+          trigger: 'blur',
+        }, {
+          asyncValidator: () => this.validVerifycode(),
+          message: '验证码长度为4位',
+          trigger: 'blur',
+        }],
+      },
+    };
+  },
+  mounted() {},
+  methods: {
+    submit() {
+      const res = Validator(this.formdata, this.rules);
+      this.error = res.series;
+      if (res.pass) {
+        this.isSubmit = true;
+      }
+    },
+    async validVerifycode() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve();
+        }, 2000);
+      });
+    },
+  },
 };
 </script>
 

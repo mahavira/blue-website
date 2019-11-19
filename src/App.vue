@@ -96,7 +96,7 @@ export default {
       scrollTo(offsetTop);
     },
     login() {
-      this.$refs.sidebar.openDialog('login');
+      this.$refs.sidebar.openLogin();
     },
   },
 };

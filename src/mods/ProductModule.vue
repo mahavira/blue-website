@@ -241,6 +241,7 @@ export default {
     position: relative;
     height: auto;
     display: block;
+    padding-bottom: 0;
   }
   .mod-container-wrp{
     flex-direction: column;
