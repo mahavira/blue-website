@@ -41,7 +41,7 @@ export default {
 }
 
 @import '../styles/mixin';
-@include respond-to(wide) {
+@include respond-to(tablet) {
   .mod{
     background-position: left top;
   }
