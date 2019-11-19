@@ -206,6 +206,16 @@ export default {
     opacity: 0.5;
   }
 }
+@include respond-to(wide) {
+  .menus{
+    .title{
+      margin-bottom: 30px;
+    }
+    .menu-item{
+      margin-bottom: 25px;
+    }
+  }
+}
 @include respond-to(tablet) {
   .sidebar{
     right: 0;
